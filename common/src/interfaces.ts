@@ -36,3 +36,5 @@ export interface Answers {
   userId: string;
   answers: SingleAnswer[];
 }
+
+export type AnonymousAnswers = SingleAnswer[];
