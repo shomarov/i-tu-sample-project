@@ -1,22 +1,54 @@
-import * as React from "react";
-import { getHelloWorld } from "./api";
+import React, { useEffect } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import { useStateValue } from './state/state';
+import loginService from './services/login';
+import questionService from './services/questions';
+import answerService from './services/answers';
+import Header from './components/Header';
+import QuestionsListView from './components/QuestionsListView';
+import QuestionView from './components/QuestionView';
+import Footer from './components/Footer';
+import { setQuestions, setMyAnswers, setStatistics } from './state/actions';
 
-const { useState, useEffect } = React;
-
-const App: React.FunctionComponent = () => {
-  const [serverMessage, setServerMessage] = useState<string>(
-    "Calling backend..."
-  );
+const App: React.FC = () => {
+  const [{ questions, answers, statistics }, dispatch] = useStateValue();
 
   useEffect(() => {
-    getHelloWorld().then(json => setServerMessage(json.message));
+    const fetchQuestions = async () => {
+      const fetchedQuestions = await questionService.fetchQuestions();
+      dispatch(setQuestions(fetchedQuestions));
+    };
+
+    const login = async () => {
+      const data = await loginService.login();
+      dispatch(setMyAnswers(data));
+    };
+
+    const fetchStats = async () => {
+      const { data } = await answerService.fetchAnswers();
+      dispatch(setStatistics(data));
+    };
+
+    fetchQuestions();
+    login();
+    fetchStats();
   }, []);
 
+  if (!questions) return <div>loading...</div>;
+
+  console.log(statistics);
+
   return (
-    <>
-      <h1>Hello From React!</h1>
-      <p>{serverMessage}</p>
-    </>
+    <div>
+      <div>
+        <Header />
+      </div>
+      <Switch>
+        <Route exact path="/questions/:id" render={() => <QuestionView />} />
+        <Route path="/" render={() => <QuestionsListView />} />
+      </Switch>
+      <Footer />
+    </div>
   );
 };
 

@@ -1,15 +1,19 @@
-const path = require("path");
-const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
+const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
-  mode: "development",
+  mode: 'development',
   devServer: {
     serveIndex: false,
     watchContentBase: true
   },
-  devtool: "inline-source-map",
+  devtool: 'inline-source-map',
   devServer: {
-    contentBase: path.resolve(__dirname, "public")
+    contentBase: path.resolve(__dirname, 'public'),
+    historyApiFallback: true
+  },
+  output: {
+    publicPath: '/'
   }
 });
