@@ -2,19 +2,36 @@ import { Answers } from './interfaces';
 
 export const answersData: Answers[] = [
   {
+    userId: '1',
+    answers: [
+      {
+        questionId: '1',
+        choice: 5
+      },
+      {
+        questionId: '2',
+        choice: 4
+      },
+      {
+        questionId: '3',
+        choice: 3
+      }
+    ]
+  },
+  {
     userId: '2',
     answers: [
       {
         questionId: '1',
-        choice: 2
+        choice: 3
       },
       {
         questionId: '2',
-        choice: 2
+        choice: 3
       },
       {
         questionId: '3',
-        choice: 2
+        choice: 1
       }
     ]
   },
@@ -27,11 +44,11 @@ export const answersData: Answers[] = [
       },
       {
         questionId: '2',
-        choice: 2
+        choice: 5
       },
       {
         questionId: '3',
-        choice: 2
+        choice: 5
       }
     ]
   },
@@ -57,15 +74,15 @@ export const answersData: Answers[] = [
     answers: [
       {
         questionId: '1',
-        choice: 1
+        choice: 4
       },
       {
         questionId: '2',
-        choice: 1
+        choice: 4
       },
       {
         questionId: '3',
-        choice: 1
+        choice: 4
       }
     ]
   },
@@ -78,11 +95,11 @@ export const answersData: Answers[] = [
       },
       {
         questionId: '2',
-        choice: 1
+        choice: 5
       },
       {
         questionId: '3',
-        choice: 1
+        choice: 4
       }
     ]
   }
