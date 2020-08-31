@@ -1,0 +1,20 @@
+post http://localhost:8081/answers
+Content-Type: application/json
+
+{
+  "userId": "1",
+  "answers": [
+    {
+      "questionId": "1",
+      "choice": 3
+    },
+    {
+      "questionId": "2",
+      "choice": 3
+    },
+    {
+      "questionId": "3",
+      "choice": 3
+    }
+  ]
+}
