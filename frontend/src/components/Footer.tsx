@@ -1,10 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useStateValue } from '../state/state';
 import { clearMyAnswers, setStatistics } from '../state/actions';
 import answerService from '../services/answers';
 
 const Footer: React.FC = () => {
   const [{ currentUser, answers }, dispatch] = useStateValue();
+  const history = useHistory();
 
   const choices = Object.values(answers).map((a) => a.choice);
 
@@ -15,6 +17,7 @@ const Footer: React.FC = () => {
 
     const { data } = await answerService.fetchAnswers();
     dispatch(setStatistics(data));
+    history.push('/bye');
   };
 
   const handleClear = () => {

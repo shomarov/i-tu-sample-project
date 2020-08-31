@@ -28,8 +28,6 @@ const ChoiceView: React.FC<{
     display: stats ? '' : 'none'
   };
 
-  console.log(stats);
-
   return (
     <form>
       {question.choices.map((c) => (
@@ -42,7 +40,10 @@ const ChoiceView: React.FC<{
           />
           <label>{c.label}</label>
           <span style={style}>
-            Total answers: {!questionStats ? 0 : questionStats[c.value]}
+            Total answers:{' '}
+            {!questionStats || !questionStats[c.value]
+              ? 0
+              : questionStats[c.value]}
           </span>
         </p>
       ))}

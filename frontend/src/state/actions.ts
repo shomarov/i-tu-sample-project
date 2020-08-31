@@ -55,8 +55,6 @@ export const setStatistics = (answers: AnonymousAnswers): Action => {
     };
   }, {});
 
-  console.log('statistics', statistics);
-
   return {
     type: 'SET_STATISTICS',
     payload: statistics

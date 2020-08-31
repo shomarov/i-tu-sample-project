@@ -2,23 +2,6 @@ import { Answers } from './interfaces';
 
 export const answersData: Answers[] = [
   {
-    userId: '1',
-    answers: [
-      {
-        questionId: '1',
-        choice: 5
-      },
-      {
-        questionId: '2',
-        choice: 4
-      },
-      {
-        questionId: '3',
-        choice: 3
-      }
-    ]
-  },
-  {
     userId: '2',
     answers: [
       {

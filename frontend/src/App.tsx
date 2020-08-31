@@ -8,6 +8,7 @@ import Header from './components/Header';
 import QuestionsListView from './components/QuestionsListView';
 import QuestionView from './components/QuestionView';
 import Footer from './components/Footer';
+import ThankYou from './components/ThankYou';
 import { setQuestions, setMyAnswers, setStatistics } from './state/actions';
 
 const App: React.FC = () => {
@@ -36,8 +37,6 @@ const App: React.FC = () => {
 
   if (!questions) return <div>loading...</div>;
 
-  console.log(statistics);
-
   return (
     <div>
       <div>
@@ -45,6 +44,7 @@ const App: React.FC = () => {
       </div>
       <Switch>
         <Route exact path="/questions/:id" render={() => <QuestionView />} />
+        <Route path="/bye" render={() => <ThankYou />} />
         <Route path="/" render={() => <QuestionsListView />} />
       </Switch>
       <Footer />
